@@ -1,0 +1,20 @@
+{
+	"env": {
+		"es6": true,
+		"node": true
+	},
+
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "script"
+	},
+	"extends": "eslint:recommended",
+	"rules": {
+		"space-in-parens": "warn",
+		"array-bracket-spacing": "warn",
+		"object-curly-spacing": "warn",
+		"object-curly-newline": "warn",
+		"semi": "warn",
+		"comma-dangle": "warn"
+	}
+}
