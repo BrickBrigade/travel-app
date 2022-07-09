@@ -1,0 +1,40 @@
+body {
+	display: grid;
+	grid-template:
+	"a a a" 10vh 
+	"b b b" 85vh
+	"c c c" 5vh;
+	margin: 0px;
+	margin-right: 4px;
+}
+#banner {
+	grid-area: a;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+main {
+	grid-area: b;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+}
+form {
+	padding: 10px;
+}
+form aside {
+	font-size: 0.5em;
+}
+#result {
+	padding: 5vw;
+	padding-top: 0;
+	width: fit-content;
+	overflow-y: scroll;
+}
+#location {
+	width: 50vw;
+}
+footer{
+	grid-area: c;
+}

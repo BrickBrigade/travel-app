@@ -4,18 +4,28 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="main.css">
 	<title>Travel</title>
 </head>
 <body>
-	<header>
-		Travel Planner
+	<header id="banner">
+		<h1>Travel Planner</h1>
 	</header>
 	<main>
 		<form onsubmit="return handleSubmit(event)">
-			<input id="location" type="text">
+			<input id="country" type="text" placeholder="Country: (required)">
+			<input id="city" type="text" placeholder="City: (required)">
+			<input id="state"type="text" placeholder="State:">
+
+			<input id="date" type="date">
 			<input type="submit" value="Submit">
+			<aside>*Only use 2 letter code for Country and State</aside>
+			
 		</form>
-		
+		<section id="result">
+			<ul id="namelist">
+			</ul>
+		</section>
 	</main>
 	<footer>
 		FOOTER

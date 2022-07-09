@@ -1,0 +1,11 @@
+#banner {
+	border: 2px solid rgb(255, 0, 0);
+}
+
+main {
+	border: 2px solid rgb(0, 0, 255);
+}
+
+footer {
+	border: 2px solid rgb(0, 255, 0);
+}

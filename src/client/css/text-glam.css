@@ -1,0 +1,27 @@
+@media (max-width: 900px) {
+body {
+	font-size: 20pt;
+}
+
+h1 {
+	margin: 0;
+	font-size: 2em;
+}
+
+#result {
+	font-size: 1em;
+}}
+
+@media (min-width: 900px) {
+body {
+	font-size: 20pt;
+}
+
+h1 {
+	margin: 0;
+	font-size: 2em;
+}
+
+#result {
+	font-size: 1em;
+}}
