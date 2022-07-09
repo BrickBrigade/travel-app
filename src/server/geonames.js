@@ -1,7 +1,7 @@
 const fetch = require('cross-fetch');
 require('dotenv').config();
 
-async function APIResponse(params) {
+async function GeoResponse(params) {
 	const response = await fetch(`http://api.geonames.org/searchJSON?username=${process.env.geonamesUsername}&featureClass=P&`+params);
 	const json = {
 		status: response.status,
@@ -9,4 +9,4 @@ async function APIResponse(params) {
 	};
 	return json;
 }
-module.exports = APIResponse;
+module.exports = GeoResponse;
