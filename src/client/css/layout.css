@@ -22,15 +22,17 @@ main {
 }
 form {
 	padding: 10px;
+	width: 75vw;
+	align-items: center;
+	
 }
 form aside {
 	font-size: 0.5em;
 }
 #result {
-	padding: 5vw;
-	padding-top: 0;
-	width: fit-content;
-	overflow-y: scroll;
+	display: flex;
+	width: 75vw;
+	overflow: auto;
 }
 #location {
 	width: 50vw;

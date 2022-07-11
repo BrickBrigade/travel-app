@@ -25,3 +25,7 @@ h1 {
 #result {
 	font-size: 1em;
 }}
+
+#tempc, #tempf {
+	text-decoration: underline;
+}
