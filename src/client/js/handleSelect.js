@@ -7,7 +7,7 @@ function handleSelect() {
 	for (let item of nameItem) {
 		item.addEventListener('click', (e) => {
 			selection = e.target;
-			console.log(`selection = ${selection.innerHTML}\nIndex: ${selection.dataset.index}\nCoords: ${selection.dataset.coords}`);
+			// console.log(`selection = ${selection.innerHTML}\nIndex: ${selection.dataset.index}\nCoords: ${selection.dataset.coords}`);
 			printInfo(selection);
 		});
 	}

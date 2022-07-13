@@ -33,9 +33,6 @@ function printList() {
 			results.appendChild(nameList);
 
 			for (let i in res.geonames){
-				console.log(res.geonames[i].name);
-				console.log(res.geonames[i].adminCode1);
-				console.log(res.geonames[i].countryCode);
 				let item = document.createElement('li');
 				item.innerHTML = `${res.geonames[i].name}, ${res.geonames[i].adminCode1}, ${res.geonames[i].countryCode}`;
 				item.className = 'nameItem';

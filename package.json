@@ -7,8 +7,8 @@
     "test": "jest",
     "start": "node src/server/server.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "dev-server": "nodemon ./src/server/server.js",
-    "dev-client": "webpack serve --config webpack.dev.js --open"
+    "dev-server": "node ./src/server/server.js",
+    "dev-client": "webpack-dev-server --port 3030"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +27,9 @@
     "nodemon": "^2.0.19",
     "style-loader": "^3.3.1",
     "supertest": "^6.2.4",
-    "webpack-dev-server": "^4.9.3"
+    "webpack-dev-middleware": "^5.3.3",
+    "webpack-dev-server": "^4.9.3",
+    "webpack-hot-middleware": "^2.25.1"
   },
   "dependencies": {
     "express": "^4.18.1",

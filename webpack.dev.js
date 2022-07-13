@@ -1,14 +1,16 @@
 const path = require('path');
+const webpack = require('webpack');
+const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-	entry: './src/client/index.js',
+	entry: ['./src/client/index.js', hotMiddlewareScript],
 	mode: 'development',
 	devtool: 'source-map',
 	stats: 'verbose',
 	devServer: {
-		port: 3030
+		static: './dist'
 	},
 	module: {
 		rules: [
@@ -30,6 +32,14 @@ module.exports = {
 				filename: "./index.html"
 			}
 		),
-		new MiniCssExtractPlugin()
-	]
+		new MiniCssExtractPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoEmitOnErrorsPlugin()
+	],
+	output: {
+		filename: '[name].bundle.js',
+		path: path.resolve(__dirname, 'dist'),
+		clean: true,
+		publicPath:'/'
+	}
 };
