@@ -1,20 +1,12 @@
 import printList from '../makeLocationList';
 import handleSubmit from '../handleSubmit';
 jest.mock('../makeLocationList');
-let formCity = 'new york';
-let formState = 'ny';
-let formCountry = 'us';
-test('should call printList 1 time', ()=>{
-	document.body.innerHTML=`
-	<form onsubmit="return handleSubmit(event)">
-		<input id="country" type="text" placeholder="Country: (required)">
-		<input id="city" type="text" placeholder="City: (required)">
-		<input id="state"type="text" placeholder="State:">
 
-		<input id="date" type="date">
-		<input type="submit" value="Submit">			
-	</form>
-	`;
+test('should call printList when provided required input', ()=>{
+	document.body.innerHTML=
+	`<form onsubmit="return handleSubmit(event)">
+		<input id="country" value="us"><input id="city" value="new york"><input id="state"><input id="date" type="date"><input type="submit" value="Submit"></form>`;
+	const event = Object.assign(jest.fn(), { preventDefault:()=>{} });
 	handleSubmit(event);
 	expect(printList).toHaveBeenCalled();
 });
