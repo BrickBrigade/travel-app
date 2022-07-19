@@ -85,22 +85,43 @@ function printInfo(selection){
 				{
 					let weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 					listItem.innerHTML = `<strong>${listItemTitles[i]}:</strong>`;
+					let tableDiv = document.createElement('div');
+					tableDiv.classList.add('table');
 					let weatherTable = document.createElement('table');
 					let thead = document.createElement('thead');
 					let tbody = document.createElement('tbody');
-					weatherTable.appendChild(tbody);
 
-					let row_1 = document.createElement('tr');
+
+					let row_day = document.createElement('tr');
 					for (let i in res.data){
 						let heading = document.createElement('th');
 						let day = new Date(res.data[i].valid_date.replace(/-/g, '/'));
 						console.log(day);
 						heading.innerHTML = `${weekDays[day.getDay()]}`;
-						row_1.appendChild(heading);
+						row_day.appendChild(heading);
 					}
-					thead.appendChild(row_1);
+					thead.appendChild(row_day);
+
+					let row_temp = document.createElement('tr');
+					for (let i in res.data){
+						let tempCell = document.createElement('td');
+						tempCell.innerHTML = `Average: ${Math.round(res.data[i].temp)}\u2103/${Math.round((res.data[i].temp*9/5)+32)}\u2109`;
+						row_temp.appendChild(tempCell);
+					}
+					tbody.appendChild(row_temp);
+
+					let row_humid = document.createElement('tr');
+					for (let i in res.data){
+						let humidCell = document.createElement('td');
+						humidCell.innerHTML = `Humidity: ${Math.round(res.data[i].rh)}`;
+						row_humid.appendChild(humidCell);
+					}
+					tbody.appendChild(row_humid);
+
 					weatherTable.appendChild(thead);
-					listItem.appendChild(weatherTable);
+					weatherTable.appendChild(tbody);
+					tableDiv.appendChild(weatherTable);
+					listItem.appendChild(tableDiv);
 					break;
 				}
 			}

@@ -1,4 +1,4 @@
-const printInfo = require('./makeSelectionInfo');
+const printInfo = require('./makeSelectionList');
 
 function handleSelect() {
 	

@@ -9,3 +9,18 @@ main {
 footer {
 	border: 2px solid rgb(0, 255, 0);
 }
+.table {
+	overflow-x: scroll;
+	width: 75vw;
+}
+table {
+	border-collapse: collapse;
+}
+th {
+	border: 2px solid rgb(0, 0, 0);
+	padding: 4px;
+}
+td {
+	border: 2px solid rgb(0, 0, 0);
+	padding: 4px;
+}

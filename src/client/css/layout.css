@@ -6,6 +6,7 @@ body {
 	"c c c" 5vh;
 	margin: 0px;
 	margin-right: 4px;
+	overflow-x: visible;
 }
 #banner {
 	grid-area: a;
@@ -32,7 +33,6 @@ aside {
 #result {
 	display: flex;
 	width: 75vw;
-	overflow: auto;
 }
 #location {
 	width: 50vw;

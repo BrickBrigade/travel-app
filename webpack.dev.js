@@ -1,17 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-	entry: ['./src/client/index.js', hotMiddlewareScript],
+	entry: ['./src/client/index.js'],
 	mode: 'development',
 	devtool: 'source-map',
 	stats: 'verbose',
-	devServer: {
-		static: './dist'
-	},
 	module: {
 		rules: [
 			{

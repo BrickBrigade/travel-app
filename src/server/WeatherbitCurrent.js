@@ -1,3 +1,5 @@
+//makes request to weatherbit API and returns response in the form of json
+
 const fetch = require('cross-fetch');
 require('dotenv').config();
 

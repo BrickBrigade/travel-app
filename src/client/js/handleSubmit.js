@@ -1,5 +1,5 @@
 import printList from "./makeLocationList";
-function handleSubmit(e) {
+export default function handleSubmit(e) {
 	let formCity = document.getElementById('city').value;
 	let formState = document.getElementById('state').value;
 	let formCountry = document.getElementById('country').value;
@@ -14,5 +14,3 @@ function handleSubmit(e) {
 		alert('Please fill "Country" and "City" parameter boxes');
 	}
 }
-
-export { handleSubmit };
