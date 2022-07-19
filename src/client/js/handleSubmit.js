@@ -11,6 +11,6 @@ export default function handleSubmit(e) {
 	}
 	else{
 		e.preventDefault();
-		alert('Please fill "Country" and "City" parameter boxes');
+		alert('Please fill "Country" and "City" boxes');
 	}
 }

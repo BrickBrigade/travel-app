@@ -1,6 +1,6 @@
 const printInfo = require('./makeSelectionList');
 
-function handleSelect() {
+export default function handleSelect() {
 	
 	const nameItem = document.getElementsByClassName('nameItem');
 	let selection = undefined;
@@ -12,4 +12,3 @@ function handleSelect() {
 		});
 	}
 }
-module.exports= handleSelect;

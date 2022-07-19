@@ -30,9 +30,11 @@ form {
 aside {
 	font-size: 0.5em;
 }
-#result {
+#results {
 	display: flex;
+	justify-content: center;
 	width: 75vw;
+	overflow-y: auto;
 }
 #location {
 	width: 50vw;

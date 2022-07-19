@@ -15,6 +15,7 @@ export default function printList() {
 		let infoContainer = document.getElementById('infoList');
 		let results = document.getElementById('results');
 
+		// clears last results
 		if(infoContainer != null) {
 			results.removeChild(infoContainer);
 		}
@@ -41,4 +42,3 @@ export default function printList() {
 		handleSelect(res);
 	});
 }
-module.exports = printList;
