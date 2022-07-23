@@ -1,36 +1,24 @@
-function printInfo(selection){
+import makeMap from "./makeMap";
+export default function printInfo(selection){
 	let coords = selection.dataset.coords.split(',');
-
-	var today = new Date();
-	console.log(`today = ${today}`);
-	var txtDate = document.getElementById('date');
-	if(txtDate.value == ""){
-		console.log('no date was entered');
-		txtDate = today;
-	}
-	console.log(`txtDate: ${Date.parse(txtDate.value)}`);
-	var nextWeek = Date.parse(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7));
-	console.log(`nextWeek: ${nextWeek}`);
-
-
-
-
+	let today = new Date();
+	let txtDate = Date.parse(document.getElementById('date').value);
+		if(isNaN(txtDate)){txtDate = Date.parse(today);}
+	let nextWeek = Date.parse(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7));
 	let results = document.getElementById('results');
-
-
-
 	let params = new URLSearchParams({ locationCoords: `lat=${coords[0]}&lon=${coords[1]}` });
-	console.log('fetching from weather api...');
-
-	// function getWeekForecast(){}
 	(function clearResults(){
 		let nameList = document.getElementById('nameList');
 		let infoList = document.getElementById('infoList');
-		if(infoList != null) {
-			results.removeChild(infoList);
-		}
+		let map = document.getElementById('map');
 		if(nameList != null){
 			results.removeChild(nameList);
+		}
+		if(infoList != null){
+			results.removeChild(infoList);
+		}
+		if(map != null){
+			results.removeChild(map);
 		}
 	})();
 	function printCurrentInfo(res){
@@ -71,14 +59,14 @@ function printInfo(selection){
 		let infoList = document.createElement('ul');
 		infoList.id = 'infoList';
 		let listItemTitles = ['Destination', '16-day Weather Forecast'];
-		let infoPieces = [`${res.data[0].temp}\u2109`, `${res.data[0].rh}%`];
-		let infoPieceTitles = ['Temperature', 'Humidity'];
+		// let infoPieces = [`${res.data[0].temp}\u2109`, `${res.data[0].rh}%`];
+		// let infoPieceTitles = ['Temperature', 'Humidity'];
 		for (let i in listItemTitles){
 			let listItem = document.createElement('li');
 			switch (listItemTitles[i]) {
 				case 'Destination':
 				{
-					listItem.innerHTML = `<strong>${listItemTitles[i]}:</strong><br>${res.city_name}, ${res.state_code}, ${res.country_code}<br><br>`;
+					listItem.innerHTML = `<strong>${listItemTitles[i]}:</strong><br>${res.city_name}, ${res.state_code}, ${res.country_code}<br>`;
 					break;
 				}
 				case '16-day Weather Forecast':
@@ -96,7 +84,7 @@ function printInfo(selection){
 					for (let i in res.data){
 						let heading = document.createElement('th');
 						let day = new Date(res.data[i].valid_date.replace(/-/g, '/'));
-						console.log(day);
+						// console.log(day);
 						heading.innerHTML = `${weekDays[day.getDay()]}`;
 						row_day.appendChild(heading);
 					}
@@ -130,65 +118,26 @@ function printInfo(selection){
 		fragment.appendChild(infoList);
 		results.appendChild(fragment);
 	}
-	function printCurrentWeather(){
-		fetch('http://localhost:3000/api/weather/current?'+params.toString())
-		.then(res => res.json())
-		.then((res) => {
-			printCurrentInfo(res);
-		});
+	function printImage(){
+		const mapDiv =  document.createElement('div');
+		mapDiv.className='map';
+		mapDiv.id='map';
+		results.appendChild(mapDiv);
+		makeMap(coords[0], coords[1]);
 	}
-	function printFutureWeather(){
+	if (txtDate < nextWeek){
+		fetch('http://localhost:3000/api/weather/current?'+params.toString())
+		.then(weatherRes=>weatherRes.json())
+		.then((weatherRes) => {
+			printCurrentInfo(weatherRes);
+			printImage();
+		});
+	}else{
 		fetch('http://localhost:3000/api/weather/future?'+params.toString())
-		.then(res => res.json())
+		.then(res=>res.json())
 		.then((res) => {
 			printFutureInfo(res);
+			printImage();
 		});
 	}
-
-	if (Date.parse(txtDate) < nextWeek){
-		printCurrentWeather();
-	}else{
-		printFutureWeather();
-	}
-	
-	// fetch('http://localhost:3000/api/weather/current?'+params.toString())
-	// .then(res => res.json())
-	// .then((res) => {
-	// 	let fragment = document.createDocumentFragment();
-	// 		let infoList = document.createElement('ul');
-	// 		infoList.id = 'infoList';
-
-	// 		let listItemTitles = ['Destination', 'Weather'];
-	// 		let infoPieces = [`${res.data[0].temp}\u2109`, `${res.data[0].rh}%`];
-	// 		let infoPieceTitles = ['Temperature', 'Humidity'];
-
-	// 		for (let i in listItemTitles){
-	// 			let listItem = document.createElement('li');
-	// 			switch (listItemTitles[i]) {
-	// 				case 'Destination':
-	// 				{
-	// 					listItem.innerHTML = `<strong>${listItemTitles[i]}:</strong><br>${res.data[0].city_name}, ${res.data[0].state_code}, ${res.data[0].country_code}<br><br>`;
-	// 					break;
-	// 				}
-	// 				case 'Weather':
-	// 				{
-	// 					listItem.innerHTML = `<strong>${listItemTitles[i]}:</strong><br>`;
-	// 					let weatherList = document.createElement('ul');
-	// 					for (let i in infoPieces){
-	// 						let weatherItem = document.createElement('li');
-	// 						weatherItem.innerHTML = `${infoPieceTitles[i]}: ${infoPieces[i]}`;
-	// 						weatherList.appendChild(weatherItem);
-	// 					}
-	// 					listItem.appendChild(weatherList);
-	// 					break;
-	// 				}
-	// 			}
-	// 			infoList.appendChild(listItem);
-	// 		}
-	// 		fragment.appendChild(infoList);
-	// 	results.appendChild(fragment);
-	// });
 }
-
-
-module.exports = printInfo;

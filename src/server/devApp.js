@@ -32,5 +32,4 @@ app.get('/api/weather/future', async function (req, res) {
 	res.json(response.body);
 });
 
-
 module.exports = app;

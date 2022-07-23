@@ -25,6 +25,9 @@ h1 {
 #result {
 	font-size: 1em;
 }}
+#infoList {
+	font-size: 0.8em;
+}
 
 #tempc, #tempf {
 	text-decoration: underline;

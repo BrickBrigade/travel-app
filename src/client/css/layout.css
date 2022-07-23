@@ -6,7 +6,6 @@ body {
 	"c c c" 5vh;
 	margin: 0px;
 	margin-right: 4px;
-	overflow-x: visible;
 }
 #banner {
 	grid-area: a;
@@ -20,6 +19,7 @@ main {
 	flex-direction: column;
 	justify-content: start;
 	align-items: center;
+	overflow-y: scroll;
 }
 form {
 	display: flex;
@@ -32,9 +32,19 @@ aside {
 }
 #results {
 	display: flex;
-	justify-content: center;
-	width: 75vw;
-	overflow-y: auto;
+	flex-direction: column;
+	align-items: center;
+	width: 85vw;
+	height: 100%;
+}
+#infoList {
+	height: fit-content;
+	align-self: baseline;
+	margin: 10px;
+}
+.map {
+	height: 100%;
+	width: 100%;
 }
 #location {
 	width: 50vw;
